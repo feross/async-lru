@@ -33,8 +33,6 @@ class AsyncCache extends EventEmitter {
     if (typeof loadArgs === 'function') {
       cb = loadArgs
       loadArgs = null
-    } else if (!Array.isArray(loadArgs)) {
-      throw new Error('Parameter `loadArgs` must be an Array')
     }
 
     if (this._loading[key]) {
@@ -60,8 +58,10 @@ class AsyncCache extends EventEmitter {
 
     if (loadArgs == null) {
       this._load(key, loadCb)
-    } else {
+    } else if (Array.isArray(loadArgs)) {
       this._load.apply(this, loadArgs.concat(loadCb))
+    } else {
+      this._load(loadArgs, loadCb)
     }
   }
 
