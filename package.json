@@ -1,0 +1,39 @@
+{
+  "name": "async-lru",
+  "description": "A simple async LRU cache supporting O(1) set, get and eviction of old keys",
+  "version": "0.0.0",
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "http://feross.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/feross/async-lru/issues"
+  },
+  "dependencies": {
+    "lru": "^3.1.0"
+  },
+  "devDependencies": {
+    "standard": "*",
+    "tape": "^4.0.0"
+  },
+  "homepage": "https://github.com/feross/async-lru",
+  "keywords": [
+    "async",
+    "lru",
+    "least recently used",
+    "cache",
+    "async cache",
+    "lru cache",
+    "async lru"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/feross/async-lru.git"
+  },
+  "scripts": {
+    "test": "standard && tape test/*.js"
+  }
+}
