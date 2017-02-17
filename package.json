@@ -1,7 +1,7 @@
 {
   "name": "async-lru",
   "description": "A simple async LRU cache supporting O(1) set, get and eviction of old keys",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Feross Aboukhadijeh",
     "email": "feross@feross.org",
