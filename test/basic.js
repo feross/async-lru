@@ -1,6 +1,41 @@
 const test = require('tape')
 const AsyncLRU = require('../')
 
+test('pass `loadArgs` option to get()', (t) => {
+  t.plan(3)
+
+  const lru = new AsyncLRU({
+    max: 2,
+    load: (key, cb) => {
+      t.equal(key, 'BAR')
+      cb(null, 'bar')
+    }
+  })
+
+  lru.get('foo', ['BAR'], (err, value) => {
+    t.error(err)
+    t.equal(value, 'bar')
+  })
+})
+
+test('pass `loadArgs` option with multiple args to get()', (t) => {
+  t.plan(4)
+
+  const lru = new AsyncLRU({
+    max: 2,
+    load: (key1, key2, cb) => {
+      t.equal(key1, 'BAR')
+      t.equal(key2, 'BAZ')
+      cb(null, 'bar')
+    }
+  })
+
+  lru.get('foo', ['BAR', 'BAZ'], (err, value) => {
+    t.error(err)
+    t.equal(value, 'bar')
+  })
+})
+
 test('clear() sets the cache to its initial state', (t) => {
   const lru = new AsyncLRU({
     max: 2,

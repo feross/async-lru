@@ -29,7 +29,14 @@ class AsyncCache extends EventEmitter {
     return this._cache.set(key, value)
   }
 
-  get (key, cb) {
+  get (key, loadArgs, cb) {
+    if (typeof loadArgs === 'function') {
+      cb = loadArgs
+      loadArgs = null
+    } else if (!Array.isArray(loadArgs)) {
+      throw new Error('Parameter `loadArgs` must be an Array')
+    }
+
     if (this._loading[key]) {
       return this._loading[key].push(cb)
     }
@@ -41,7 +48,7 @@ class AsyncCache extends EventEmitter {
 
     this._loading[key] = [ cb ]
 
-    this._load(key, (err, value) => {
+    const loadCb = (err, value) => {
       if (!err) this._cache.set(key, value)
 
       const cbs = this._loading[key]
@@ -49,7 +56,13 @@ class AsyncCache extends EventEmitter {
         delete this._loading[key]
         cbs.forEach((cb) => cb(err, value))
       }
-    })
+    }
+
+    if (loadArgs == null) {
+      this._load(key, loadCb)
+    } else {
+      this._load.apply(this, loadArgs.concat(loadCb))
+    }
   }
 
   peek (key) {

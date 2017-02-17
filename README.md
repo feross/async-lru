@@ -90,14 +90,18 @@ Set the value of the key and mark the key as most recently used.
 
 **Returns**: `value`
 
-### `lru.get(key, callback)`
+### `lru.get(key, [loadArgs], callback)`
 
 Query the value of the key and mark the key as most recently used.
 
 If the key is in the cache, then calls `callback(null, cached)` on `nextTick`.
-Otherwise, calls the `load` function that was supplied in the options object. If it
-doesn't return an error, then cache the result. Multiple `get` calls with the same
-`key` will only ever have a single `load` call at the same time.
+Otherwise, calls `load(key, callback)` where `load` is the function that was
+supplied in the options object. If it doesn't return an error, then cache the
+result. Multiple `get` calls with the same `key` will only ever have a single
+`load` call at the same time.
+
+Optionally, specify `loadArgs` if you want a custom array of arguments to be passed
+into `load` instead of `key`, like `load.apply(null, loadArgs.concat(callback))`.
 
 ### `lru.peek(key)`
 
