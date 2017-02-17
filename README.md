@@ -71,7 +71,7 @@ Optional options:
 }
 ```
 
-If you pass `max`, items will be evictec if the cache is storing more than `max` items.
+If you pass `max`, items will be evicted if the cache is storing more than `max` items.
 If you pass `maxAge`, items will be evicted if they are older than `maxAge` when you access them.
 
 **Returns**: the newly created AsyncLRU cache
