@@ -20,6 +20,7 @@ npm install async-lru
 ## usage
 
 ```js
+const AsyncLRU = require('async-lru')
 const fs = require('fs')
 
 const lru = new AsyncLRU({
@@ -29,11 +30,9 @@ const lru = new AsyncLRU({
   }
 })
 
-lru.get('file.txt', (err, value) => { // not in cache, will call load()
-  if (err) throw err
-
-  lru.get('file.txt', (err, value) => { // cached, will not call load()
-    if (err) throw err
+lru.get('file.txt', (err, value) => { // not in cache, calls load()
+  lru.get('file.txt', (err, value) => { // cached, will NOT call load()
+    // ...
   })
 })
 ```
