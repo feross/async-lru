@@ -1,4 +1,4 @@
-# async-lru [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
+# async-lru [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![standard][standard-image]][standard-url]
 
 [travis-image]: https://img.shields.io/travis/feross/async-lru/master.svg
 [travis-url]: https://travis-ci.org/feross/async-lru
@@ -6,6 +6,8 @@
 [npm-url]: https://npmjs.org/package/async-lru
 [downloads-image]: https://img.shields.io/npm/dm/async-lru.svg
 [downloads-url]: https://npmjs.org/package/async-lru
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
+[standard-url]: http://standardjs.com/
 
 ### A simple async LRU cache supporting O(1) set, get and eviction of old keys
 

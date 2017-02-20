@@ -386,3 +386,12 @@ test('`evict` event is fired when evicting old keys', (t) => {
   t.deepEqual(events, expect)
   t.end()
 })
+
+test('creating instance without `opts` or `load` property throws Error', (t) => {
+  t.plan(2)
+
+  t.throws(() => new AsyncLRU(), /error/i, 'should throw Error')
+  t.throws(() => new AsyncLRU({ max: 2 }), /error/i, 'should throw Error')
+
+  t.end()
+})
