@@ -382,7 +382,7 @@ test('`evict` event is fired when evicting old keys', (t) => {
   lru.set('foo3', 'bar3')
   lru.set('foo4', 'bar4')
 
-  const expect = [{key: 'foo1', value: 'bar1'}, {key: 'foo2', value: 'bar2'}]
+  const expect = [{ key: 'foo1', value: 'bar1' }, { key: 'foo2', value: 'bar2' }]
   t.deepEqual(events, expect)
   t.end()
 })
