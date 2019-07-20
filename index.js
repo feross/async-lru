@@ -44,7 +44,7 @@ class AsyncCache extends EventEmitter {
       return process.nextTick(() => cb(null, cached))
     }
 
-    this._loading[key] = [ cb ]
+    this._loading[key] = [cb]
 
     const loadCb = (err, value) => {
       if (!err) this._cache.set(key, value)
