@@ -1,3 +1,4 @@
+/*! async-lru. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 'use strict'
 
 const EventEmitter = require('events')
